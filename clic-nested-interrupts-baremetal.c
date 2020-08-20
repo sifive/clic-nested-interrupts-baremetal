@@ -330,6 +330,8 @@ void gpio_enable_io(uint32_t pin, uint32_t input_or_output, uint32_t enable_inte
 
     uint32_t io_bit, gpio_in, gpio_out;
 
+#if GPIO_PRESENT
+    
     if (pin > MAX_GPIO_PINS) {
         return;
     }
@@ -370,6 +372,9 @@ void gpio_enable_io(uint32_t pin, uint32_t input_or_output, uint32_t enable_inte
         /* Disable Interrupt */
         write_word(GPIO_HIGH_IE_ADDR, DISABLE);
     }
+    
+#endif    
+    
 }
 
 /* External Interrupt ID #11 - handles all global interrupts */
